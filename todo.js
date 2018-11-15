@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const clock = document.querySelector("#clock");
       const date = document.querySelector('#date');
       
-      let hours = timeDate.getHours() % 12;
+      let hours = timeDate.getHours() % 24;
       let minutes = timeDate.getMinutes();
       let dayOrNight = '';
       
@@ -24,17 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
         minutes = '0' + minutes;
       }
   
-      if (timeDate.getHours() <= 12) {
-        dayOrNight = 'AM';
-      } else {
-        dayOrNight = 'PM';
-      }
-      
-      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+     
+      const days = ['Неділя', 'Понеділок', 'Вівторок', 'Середа', 'Четвер', 'Пятниця', 'Субота'];
       const today = days[timeDate.getDay()];
       
       const clockOutput = hours + ' : ' + minutes + ' ' + dayOrNight;
-      const dateOutput = 'Looks like another ' + today;
+      const dateOutput = 'Прекрасний день' + today;
       
       clock.textContent = clockOutput;
       date.textContent = dateOutput;
@@ -78,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       if (input.value === '') {
-        errorMessage.textContent = 'Please enter a task';
+        errorMessage.textContent = 'Будь ласка у ведіть текст';
       } else {
         itemsArray.push(input.value);
         setLocalStorage('items', itemsArray);
